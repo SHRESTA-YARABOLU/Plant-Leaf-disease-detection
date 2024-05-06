@@ -1,26 +1,25 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-# %matplotlib inline
 import seaborn as sns
 import cv2
 import os
 from tqdm import tqdm
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
-from keras.utils import to_categorical # type: ignore
-from keras.models import Model,Sequential,load_model# type: ignore
+from keras.utils import to_categorical 
+from keras.models import Model,Sequential,load_model
 from keras import Input
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization, AveragePooling2D, GlobalAveragePooling2D# type: ignore
-from keras.optimizers import Adam# type: ignore
+from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization, AveragePooling2D, GlobalAveragePooling2D
+from keras.optimizers import Adam
 from keras.src.legacy.preprocessing.image import ImageDataGenerator
-from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau# type: ignore
-from keras.applications import DenseNet121# type: ignore
+from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
+from keras.applications import DenseNet121
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import os
 import numpy as np
-from keras.preprocessing import image# type: ignore
+from keras.preprocessing import image
 
 def build_model(input_shape, num_classes):
     densenet = DenseNet121(weights='imagenet', include_top=False)
