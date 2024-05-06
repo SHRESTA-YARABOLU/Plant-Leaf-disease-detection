@@ -5,7 +5,6 @@ import os
 
 app = Flask(__name__)
 
-# Load the trained model and disease classes
 model = None
 disease_classes = ['Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 'Potato___Early_blight',
                    'Potato___Late_blight', 'Potato___healthy', 'Tomato_Bacterial_spot', 'Tomato_Early_blight',
@@ -23,7 +22,6 @@ def predict():
         file = request.files['file']
         file.save('temp_image.jpg')
         if model is None:
-            # Load the model if it's not already loaded
             model = load_model('model.keras')  
         prediction = predict_disease(model, 'temp_image.jpg', disease_classes)
         os.remove('temp_image.jpg')
